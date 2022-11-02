@@ -1,0 +1,32 @@
+
+host: 0.0.0.0
+port: 8000
+output_dir: recordings
+
+cameras:
+  - id: cam1
+    type: local
+    source: 0
+
+  - id: cam2
+    type: rtsp
+    source: rtsp://admin:password@192.168.9.103/stream1
+    rotate: 0
+
+  - id: cam3
+    type: rtsp
+    source: rtsp://admin:password@192.168.9.107/stream1
+    rotate: 1
+
+  # - id: cam4
+  #   type: rtsp
+  #   source: rtsp://admin:password@192.168.9.225/stream1
+
+  - id: cam4
+    type: onvif
+    host: 192.168.9.225
+    port: 80
+    user: admin
+    password: test123456
+    rotate: 1
+

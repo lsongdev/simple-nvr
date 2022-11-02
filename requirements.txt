@@ -1,0 +1,6 @@
+numpy
+opencv-python
+onvif-zeep
+
+flask
+pyyaml

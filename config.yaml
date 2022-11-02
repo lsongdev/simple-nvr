@@ -1,0 +1,37 @@
+
+
+host: 0.0.0.0
+port: 8000
+output_dir: recordings
+
+cameras:
+  - id: cam1
+    type: local
+    source: 0
+
+  # - id: cam2
+  #   type: rtsp
+  #   source: rtsp://admin:lsong940@192.168.2.103/stream1
+  #   rotate: 0
+
+  # - id: cam3
+  #   type: rtsp
+  #   source: rtsp://admin:lsong940@192.168.2.107/stream1
+  #   rotate: 1
+
+  # - id: cam4
+  #   type: rtsp
+  #   source: rtsp://admin:lsong940@192.168.2.225/stream1
+
+  # - id: cam4
+  #   type: onvif
+  #   host: 192.168.2.225
+  #   port: 80
+  #   user: admin
+  #   password: test123456
+  #   rotate: 1
+
+  - id: cam5
+    type: rtsp
+    source: rtsp://admin:lsong940@192.168.3.4/stream1
+

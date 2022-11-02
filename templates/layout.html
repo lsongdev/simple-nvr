@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Simple NVR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <style>
+    @import url(https://lsong.org/css/stylesheet.css);
+    @import url(https://lsong.org/stylesheets/list.css);
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      {% block header %}
+      <a href="/">
+        <h1>Simple NVR</h1>
+      </a>
+      {% endblock %}
+
+      <nav>
+        <!-- <a href="/">index</a> -->
+      </nav>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+<script>
+  document.addEventListener("click", e => {
+    if (e.target.hasAttribute('ajax')) {
+      e.preventDefault();
+      fetch(e.target.href)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.error(error));
+    }
+  });
+</script>
+
+</html>

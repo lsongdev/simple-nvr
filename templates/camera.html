@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>{{camera.id}}</h2>
+
+<img loading="lazy" src="{{ url_for('camera_preview', camera_id=camera.id) }}" alt="Camera {{ camera.id }} feed" />
+
+<div id="ptz">
+    <a href="{{ url_for('ptz_control', camera_id=camera.id, action='left') }}" ajax>⬅️</a>
+    <a href="{{ url_for('ptz_control', camera_id=camera.id, action='right') }}" ajax>➡️</a>
+    <a href="{{ url_for('ptz_control', camera_id=camera.id, action='up') }}" ajax>⬆️</a>
+    <a href="{{ url_for('ptz_control', camera_id=camera.id, action='down') }}" ajax>⬇️</a>
+    <a href="{{ url_for('ptz_control', camera_id=camera.id, action='stop') }}" ajax>🛑</a>
+</div>
+
+<div class="video-files">
+    <h3>History</h3>
+    {% if video_files %}
+    <ul>
+        {% for video in video_files %}
+        <li>
+            <a href="{{ url_for('file_route', camera_id=camera.id, filename=video) }}">{{ video }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>暂无录制文件</p>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<style>
+  .list-item img {
+    width: 96px;
+    height: 48px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+  }
+</style>
+
+<h2>Index</h2>
+
+<ul class="list">
+  {% for camera_id, camera in cameras.items() %}
+  <li class="list-item">
+    <img loading="lazy" class="camera-feed list-item-leading" src="{{ url_for('camera_preview', camera_id=camera_id) }}"
+      alt="Camera {{ camera_id }} feed">
+    <div class="list-item-content">
+      <a class="camera-name" href="{{url_for('camera_view', camera_id=camera_id)}}">
+        <b>{{ camera_id }}</b>
+      </a>
+      <div class="camera-status">
+        Status: {{ 'Running' if camera['is_running'] else 'Stopped' }}
+      </div>
+    </div>
+    <div class="list-item-trailing">
+      {% if camera['is_running'] %}
+      <a ajax href="{{ url_for('stop_camera_route', camera_id=camera_id) }}">Stop</a>
+      {% else %}
+      <a ajax href="{{ url_for('start_camera_route', camera_id=camera_id) }}">Start</a>
+      {% endif %}
+      
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
